@@ -6,8 +6,11 @@ async function main() {
   const elon = await ElonNFT.deploy();
 
   await elon.deployed();
-
   console.log("ElonNFT deployed to:", elon.address);
+  
+  let txn = await elon.mintNFT();
+  await txn.wait();
+  
 }
 
 // We recommend this pattern to be able to use async/await everywhere
@@ -18,7 +21,7 @@ main()
     console.error(error);
     process.exit(1);
   });
-
+  
 // // We require the Hardhat Runtime Environment explicitly here. This is optional
 // // but useful for running the script in a standalone fashion through `node <script>`.
 // //
